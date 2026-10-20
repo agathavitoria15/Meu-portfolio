@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfólio de Agatha: estudante, participante de cursos e profissional de decoração de festas infantis.">
+    <title>Agatha | Meu portfólio</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --ink: #302a32;
+            --muted: #706873;
+            --accent: #9b557c;
+            --accent-dark: #76405e;
+            --paper: #fffaf7;
+            --card: #ffffff;
+            --line: #eee4e8;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: "Segoe UI", Arial, sans-serif;
+            line-height: 1.65;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .page {
+            width: min(1080px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            padding: 24px 0;
+        }
+
+        .brand {
+            color: var(--accent-dark);
+            font-size: 1.1rem;
+            font-weight: 750;
+            letter-spacing: 0.04em;
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--muted);
+            font-size: 0.95rem;
+            text-decoration: none;
+        }
+
+        nav a:hover,
+        nav a:focus-visible {
+            color: var(--accent-dark);
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            align-items: center;
+            gap: clamp(36px, 8vw, 90px);
+            padding: 68px 0 96px;
+        }
+
+        .eyebrow {
+            margin: 0 0 12px;
+            color: var(--accent);
+            font-size: 0.82rem;
+            font-weight: 750;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        h1,
+        h2,
+        h3,
+        p {
+            margin-top: 0;
+        }
+
+        h1 {
+            max-width: 620px;
+            margin-bottom: 20px;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(2.8rem, 7vw, 5rem);
+            font-weight: 500;
+            letter-spacing: -0.045em;
+            line-height: 1.05;
+        }
+
+        .hero-copy {
+            max-width: 580px;
+            color: var(--muted);
+            font-size: 1.1rem;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 14px;
+            padding: 11px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 999px;
+            color: var(--accent-dark);
+            font-weight: 650;
+            text-decoration: none;
+            transition: background-color 160ms ease, color 160ms ease;
+        }
+
+        .button:hover,
+        .button:focus-visible {
+            background: var(--accent);
+            color: #ffffff;
+        }
+
+        .portrait-wrap {
+            position: relative;
+            justify-self: center;
+            width: min(100%, 340px);
+        }
+
+        .portrait-wrap::before {
+            position: absolute;
+            z-index: -1;
+            top: 18px;
+            right: -18px;
+            bottom: -18px;
+            left: 18px;
+            border: 1px solid #d8b9ca;
+            border-radius: 48% 48% 28px 28px;
+            content: "";
+        }
+
+        .portrait {
+            display: block;
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            border-radius: 48% 48% 28px 28px;
+            object-fit: cover;
+            object-position: center 42%;
+        }
+
+        section {
+            padding: 76px 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .section-heading {
+            max-width: 620px;
+            margin-bottom: 34px;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 500;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+        }
+
+        .section-heading p,
+        .about-copy {
+            color: var(--muted);
+        }
+
+        .about-copy {
+            max-width: 760px;
+            font-size: 1.08rem;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            min-height: 190px;
+            padding: 28px;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            background: var(--card);
+        }
+
+        .card-label {
+            margin-bottom: 12px;
+            color: var(--accent);
+            font-size: 0.78rem;
+            font-weight: 750;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .card h3 {
+            margin-bottom: 8px;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1.45rem;
+            font-weight: 500;
+            line-height: 1.25;
+        }
+
+        .card p:last-child {
+            margin-bottom: 0;
+            color: var(--muted);
+        }
+
+        .course-list {
+            display: grid;
+            gap: 12px;
+            margin: 18px 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .course-list li {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .course-list li:last-child {
+            padding-bottom: 0;
+            border-bottom: 0;
+        }
+
+        .course-hours {
+            flex: 0 0 auto;
+            color: var(--muted);
+            font-size: 0.92rem;
+            white-space: nowrap;
+        }
+
+        footer {
+            padding: 28px 0 36px;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        @media (max-width: 700px) {
+            .page {
+                width: min(100% - 32px, 540px);
+            }
+
+            header {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 14px;
+            }
+
+            nav {
+                gap: 16px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 44px;
+                padding: 46px 0 72px;
+            }
+
+            .portrait-wrap {
+                width: min(74%, 300px);
+            }
+
+            section {
+                padding: 58px 0;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <header>
+            <a class="brand" href="#inicio" aria-label="Agatha, início">AGATHA</a>
+            <nav aria-label="Navegação principal">
+                <a href="#sobre">Sobre mim</a>
+                <a href="#experiencias">Experiências</a>
+                <a href="#cursos">Cursos</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero" id="inicio" aria-labelledby="titulo-principal">
+                <div>
+                    <p class="eyebrow">Meu portfólio</p>
+                    <h1 id="titulo-principal">Oi, eu sou a Agatha.</h1>
+                    <p class="hero-copy">Sou estudante do ensino médio, gosto de aprender coisas novas e tenho experiência com decoração de festas infantis e cuidado de crianças.</p>
+                    <a class="button" href="#sobre">Conheça minha história</a>
+                </div>
+                <div class="portrait-wrap">
+                    <img class="portrait" src="galeria/WhatsApp%20Image%202026-10-16%20at%2014.49.51.jpeg" alt="Foto de Agatha">
+                </div>
+            </section>
+
+            <section id="sobre" aria-labelledby="titulo-sobre">
+                <div class="section-heading">
+                    <p class="eyebrow">Um pouco sobre mim</p>
+                    <h2 id="titulo-sobre">Aprendendo e construindo meu caminho</h2>
+                </div>
+                <p class="about-copy">Tenho 16 anos e estou no primeiro ano do ensino médio. Também faço o curso de Tecnologia Básica na Afesu Morro Velho, em parceria com o SENAI. Atualmente, trabalho com buffet de festas infantis, ajudando na decoração. Às vezes, durante a semana, também cuido de uma criança com necessidades especiais.</p>
+            </section>
+
+            <section id="experiencias" aria-labelledby="titulo-experiencias">
+                <div class="section-heading">
+                    <p class="eyebrow">O que faço</p>
+                    <h2 id="titulo-experiencias">Experiências</h2>
+                    <p>Atividades que fazem parte da minha rotina e me ajudam a desenvolver novas habilidades.</p>
+                </div>
+                <div class="cards">
+                    <article class="card">
+                        <p class="card-label">Trabalho</p>
+                        <h3>Decoração de festas infantis</h3>
+                        <p>Trabalho com buffet de festas infantis, ajudando a preparar a decoração para momentos especiais.</p>
+                    </article>
+                    <article class="card">
+                        <p class="card-label">Cuidado</p>
+                        <h3>Acompanhamento de criança</h3>
+                        <p>Em alguns dias da semana, cuido de uma criança com necessidades especiais.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section id="cursos" aria-labelledby="titulo-cursos">
+                <div class="section-heading">
+                    <p class="eyebrow">Formação</p>
+                    <h2 id="titulo-cursos">Cursos</h2>
+                    <p>Formação em Tecnologia Básica na Afesu Morro Velho, em parceria com o SENAI, além de cursos livres.</p>
+                </div>
+                <div class="cards">
+                    <article class="card">
+                        <p class="card-label">Tecnologia Básica · Concluídos</p>
+                        <h3>Conhecimentos de tecnologia</h3>
+                        <ul class="course-list">
+                            <li><span>Operador de microcomputador</span><span class="course-hours">160 horas</span></li>
+                            <li><span>Power BI</span><span class="course-hours">32 horas</span></li>
+                            <li><span>Implantação de redes locais</span><span class="course-hours">48 horas</span></li>
+                            <li><span>Excel básico com IA generativa</span><span class="course-hours">20 horas</span></li>
+                        </ul>
+                    </article>
+                    <article class="card">
+                        <p class="card-label">Tecnologia Básica · Em andamento</p>
+                        <h3>Programação com IA generativa</h3>
+                        <p>Curso de 40 horas, atualmente em conclusão.</p>
+                    </article>
+                    <article class="card">
+                        <p class="card-label">Chocolândia · 3 horas</p>
+                        <h3>Biscoitos Decorados com Glacê Real</h3>
+                        <p>Curso recente de decoração de biscoitos com glacê real.</p>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Portfólio de Agatha</p>
+        </footer>
+    </div>
+</body>
+</html>
